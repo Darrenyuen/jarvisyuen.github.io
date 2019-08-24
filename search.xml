@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>如何在hexo发表博客</title>
+      <link href="/2019/08/24/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E5%8F%91%E8%A1%A8%E5%8D%9A%E5%AE%A2/"/>
+      <url>/2019/08/24/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E5%8F%91%E8%A1%A8%E5%8D%9A%E5%AE%A2/</url>
+      
+        <content type="html"><![CDATA[<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol><li>进入命令行模式，找到hexo配置文件所在的文件夹</li><li>执行<code>hexo new &#39;article title&#39;</code>创建一篇新的博客</li><li>打开<code>\source\_posts</code>（相对路径），找到<code>article title.md</code>文件</li><li>编辑<code>article title.md</code>文件，即写博客</li><li>执行<code>hexo g</code> 即<code>hexo generate</code>生成静态文件</li><li>执行<code>hexo s</code> 即<code>hexo service</code>在本地服务预览效果</li><li>执行<code>hexo d</code> 即<code>hexo deploy</code>部署到远程站点</li></ol>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
