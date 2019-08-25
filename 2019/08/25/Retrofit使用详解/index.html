@@ -4,12 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="如何在hexo发表博客, Jarvis Yuen">
-    <meta name="description" content="步骤
-进入命令行模式，找到hexo配置文件所在的文件夹
-执行hexo new &amp;#39;article title&amp;#39;创建一篇新的博客
-打开\source\_posts（相对路径），找到article title.md文件
-编辑art">
+    <meta name="keywords" content="Retrofit使用详解, Jarvis Yuen">
+    <meta name="description" content="
+Retrofit：适用于Android和Java的类型安全的HTTP客户端
+
+介绍Retrofit将您的HTTP API转换为Java接口。
+public interface GitHubService {
+  @GET(&amp;quot;us">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>如何在hexo发表博客 | Jarvis Yuen</title>
+    <title>Retrofit使用详解 | Jarvis Yuen</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/medias/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -197,13 +198,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        如何在hexo发表博客
+                        Retrofit使用详解
                     </div>
                 </div>
             </div>
@@ -312,12 +313,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/网络请求/" target="_blank">
+                                <span class="chip bg-color">网络请求</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                Android
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -325,7 +339,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-24
+                    2019-08-25
                 </div>
 
                 
@@ -341,16 +355,86 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
-<li>进入命令行模式，找到hexo配置文件所在的文件夹</li>
-<li>执行<code>hexo new &#39;article title&#39;</code>创建一篇新的博客</li>
-<li>打开<code>\source\_posts</code>（相对路径），找到<code>article title.md</code>文件</li>
-<li>编辑<code>article title.md</code>文件，即写博客</li>
-<li>执行<code>hexo g</code> 即<code>hexo generate</code>生成静态文件</li>
-<li>执行<code>hexo s</code> 即<code>hexo service</code>在本地服务预览效果</li>
-<li>执行<code>hexo d</code> 即<code>hexo deploy</code>部署到远程站点</li>
-</ol>
+                <blockquote>
+<p>Retrofit：适用于Android和Java的类型安全的HTTP客户端</p>
+</blockquote>
+<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>Retrofit将您的HTTP API转换为Java接口。</p>
+<pre><code>public interface GitHubService {
+  @GET(&quot;users/{user}/repos&quot;)
+  Call&lt;List&lt;Repo&gt;&gt; listRepos(@Path(&quot;user&quot;) String user);
+}</code></pre><p>Retrofit类实现GitHubService接口。</p>
+<pre><code>Retrofit retrofit = new Retrofit.Builder()
+    .baseUrl(&quot;https://api.github.com/&quot;)
+    .build();
 
+GitHubService service = retrofit.create(GitHubService.class);</code></pre><p>来自GitHubService的每个Call都可以向远程Web服务器发出同步或异步HTTP请求。</p>
+<pre><code>Call&lt;List&lt;Repo&gt;&gt; repos = service.listRepos(&quot;octocat&quot;);</code></pre><p>使用注释来描述HTTP请求：</p>
+<ul>
+<li>URL参数替换和查询参数支持</li>
+<li>对象请求正文的转换（例如，JSON，协议缓冲区）</li>
+<li>多部分请求正文和文件上传</li>
+</ul>
+<h4 id="API-声明"><a href="#API-声明" class="headerlink" title="API 声明"></a>API 声明</h4><p>接口方法及其参数的注释表明如何处理请求。</p>
+<ul>
+<li>请求方法<br>每个方法都必须有一个HTTP注释，提供请求方法和相对URL。有五个内置注释：GET，POST，PUT，DELETE和HEAD。资源的相对URL在注释中指定<pre><code>@GET(&quot;users/list&quot;)</code></pre>您还可以在URL中指定查询参数。<pre><code>@GET(&quot;users/list?sort=desc&quot;)</code></pre></li>
+<li>URL操作<br>可以使用方法上的替换块和参数动态更新请求URL。替换块是由{和}包围的字母数字字符串。必须使用相同的字符串使用@Path注释相应的参数。<pre><code>@GET(&quot;group/{id}/users&quot;)
+Call&lt;List&lt;User&gt;&gt; groupList(@Path(&quot;id&quot;) int groupId);</code></pre>还可以添加查询参数。<pre><code>@GET(&quot;group/{id}/users&quot;)
+Call&lt;List&lt;User&gt;&gt; groupList(@Path(&quot;id&quot;) int groupId, @Query(&quot;sort&quot;) String sort);</code></pre>对于复杂的查询参数组合，可以使用Map。<pre><code>@GET(&quot;group/{id}/users&quot;)
+Call&lt;List&lt;User&gt;&gt; groupList(@Path(&quot;id&quot;) int groupId, @QueryMap Map&lt;String, String&gt; options);</code></pre></li>
+<li>请求体<br>可以指定一个对象用作带有@Body注释的HTTP请求主体。<pre><code>@POST(&quot;users/new&quot;)
+Call&lt;User&gt; createUser(@Body User user);</code></pre>该对象也将使用Retrofit实例上指定的转换器进行转换。如果未添加转换器，则只能使用RequestBody。</li>
+<li>来自编码和多部分的请求</li>
+</ul>
+<p>还可以声明方法以发送表单编码和多部分数据。 当方法上存在@FormUrlEncoded时，将发送表单编码数据。每个键值对都使用包含名称的@Field和提供值的对象进行注释。</p>
+<pre><code>@FormUrlEncoded
+@POST(&quot;user/edit&quot;)
+Call&lt;User&gt; updateUser(@Field(&quot;first_name&quot;) String first, @Field(&quot;last_name&quot;) String last);</code></pre><p>当方法中存在@Multipart时，将使用多部分请求。使用@Part注释声明部件。</p>
+<pre><code>@Multipart
+@PUT(&quot;user/photo&quot;)
+Call&lt;User&gt; updateUser(@Part(&quot;photo&quot;) RequestBody photo, @Part(&quot;description&quot;) RequestBody description);</code></pre><p>多部件使用Retrofit的转换器之一，或者他们可以实现RequestBody来处理自己的序列化。</p>
+<ul>
+<li>头部多部分请求<br>您可以使用@Headers批注为方法设置静态标头。<pre><code>@Headers(&quot;Cache-Control: max-age=640000&quot;)
+@GET(&quot;widget/list&quot;)
+Call&lt;List&lt;Widget&gt;&gt; widgetList();</code></pre><pre><code>@Headers({
+  &quot;Accept: application/vnd.github.v3.full+json&quot;,    
+  &quot;User-Agent: Retrofit-Sample-App&quot;
+})
+@GET(&quot;users/{username}&quot;)
+Call&lt;User&gt; getUser(@Path(&quot;username&quot;) String username);</code></pre>请注意，标头不会相互覆盖。所有具有相同名称的标头都将包含在请求中。<br>可以使用@Header注释动态更新请求标头。必须为@Header提供相应的参数。如果该值为null，则将省略标头。否则，将在值上调用toString，并使用结果。<pre><code>@GET(&quot;user&quot;)
+Call&lt;User&gt; getUser(@Header(&quot;Authorization&quot;) String authorization)</code></pre>与查询参数类似，对于复杂的标题组合，可以使用Map。<pre><code>@GET(&quot;user&quot;)
+Call&lt;User&gt; getUser(@HeaderMap Map&lt;String, String&gt; headers)</code></pre>可以使用OkHttp拦截器指定需要添加到每个请求的标头。</li>
+<li>同步vs异步<br>调用实例可以同步或异步执行。每个实例只能使用一次，但调用clone()将创建一个可以使用的新实例。<br>在Android上，回调将在主线程上执行。在JVM上，回调将在执行HTTP请求的同一线程上发生。<h4 id="Retrofit-构造"><a href="#Retrofit-构造" class="headerlink" title="Retrofit 构造"></a>Retrofit 构造</h4>Retrofit是将API接口转换为可调用对象的类。默认情况下，Retrofit会为您的平台提供合理的默认值，但它允许自定义。</li>
+</ul>
+<p><strong>转换器</strong><br>默认情况下，Retrofit只能将HTTP主体反序列化为OkHttp的ResponseBody类型，并且它只能接受@Body的RequestBody类型。<br>可以添加转换器以支持其他类型。六个兄弟模块适应流行的序列化库，方便你使用。</p>
+<ol>
+<li>Gson: com.squareup.retrofit2:converter-gson</li>
+<li>Jackson: com.squareup.retrofit2:converter-jackson</li>
+<li>Moshi: com.squareup.retrofit2:converter-moshi</li>
+<li>Protobuf: com.squareup.retrofit2:converter-protobuf</li>
+<li>Wire: com.squareup.retrofit2:converter-wire</li>
+<li>Simple XML: com.squareup.retrofit2:converter-simplexml</li>
+</ol>
+<ul>
+<li>Scalars (primitives, boxed, and String): com.squareup.retrofit2:converter-scalars<br>下面是一个使用GsonConverterFactory类生成GitHubService接口实现的示例，该接口使用Gson进行反序列化。<pre><code>Retrofit retrofit = new Retrofit.Builder()
+ .baseUrl(&quot;https://api.github.com&quot;)
+ .addConverterFactory(GsonConverterFactory.create())
+ .build();
+</code></pre></li>
+</ul>
+<p>GitHubService service = retrofit.create(GitHubService.class);</p>
+<pre><code>**定制转换器**
+如果您需要与使用Retrofit不支持开箱即用的内容格式的API（例如YAML，txt，自定义格式）进行通信，或者您希望使用其他库来实现现有格式，则可以轻松创建你自己的转换器。创建一个扩展Converter.Factory类的类，并在构建适配器时传入实例。
+#### 配置
+**MAVEN**</code></pre><dependency>
+    <groupid>com.squareup.retrofit2</groupid>
+    <artifactid>retrofit</artifactid>
+    <version>(insert latest version)</version>
+</dependency>
+```
+**GRADLE**
+```
+implementation 'com.squareup.retrofit2:retrofit:(insert latest version)'
+```
             </div>
             <hr/>
 
@@ -508,9 +592,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《如何在hexo发表博客》
+                    《Retrofit使用详解》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/24/如何在hexo发表博客/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/25/Retrofit使用详解/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Jarvis Yuen
             </a> 采用
@@ -554,24 +638,20 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/08/25/Retrofit使用详解/">
+                <a href="/2019/08/25/RxJava使用详解/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Retrofit使用详解">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="RxJava使用详解">
                         
-                        <span class="card-title">Retrofit使用详解</span>
+                        <span class="card-title">RxJava使用详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-Retrofit：适用于Android和Java的类型安全的HTTP客户端
-
-介绍Retrofit将您的HTTP API转换为Java接口。
-public interface GitHubService {
-  @GET(&quot;us
+official define:Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using o
                         
                     </div>
                     <div class="publish-info">
@@ -593,8 +673,8 @@ public interface GitHubService {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/网络请求/" target="_blank">
-                        <span class="chip bg-color">网络请求</span>
+                    <a href="/tags/异步/" target="_blank">
+                        <span class="chip bg-color">异步</span>
                     </a>
                     
                 </div>
@@ -605,7 +685,7 @@ public interface GitHubService {
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2019/08/24/如何在hexo发表博客/">
@@ -639,7 +719,6 @@ public interface GitHubService {
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
