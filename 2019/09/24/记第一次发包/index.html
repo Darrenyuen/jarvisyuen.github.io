@@ -4,9 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="RxJava使用详解, Jarvis Yuen">
-    <meta name="description" content="
-official define:Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using o">
+    <meta name="keywords" content="记第一次发包, Jarvis Yuen">
+    <meta name="description" content="&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;学习安卓也有一年多的时间了，这期间也学了不少知识，做了不少demo和有点规模的小项目，但是都没有正式上线过一款APP。最近，参与更新了汕大课程表这一款APP，并最终定版上线。上线的时候有点小激">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@ official define:Reactive Extensions for the JVM – a library for composing asyn
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>RxJava使用详解 | Jarvis Yuen</title>
+    <title>记第一次发包 | Jarvis Yuen</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/medias/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -194,13 +193,13 @@ official define:Reactive Extensions for the JVM – a library for composing asyn
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        RxJava使用详解
+                        记第一次发包
                     </div>
                 </div>
             </div>
@@ -311,8 +310,8 @@ official define:Reactive Extensions for the JVM – a library for composing asyn
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/异步/" target="_blank">
-                                <span class="chip bg-color">异步</span>
+                            <a href="/tags/Android/" target="_blank">
+                                <span class="chip bg-color">Android</span>
                             </a>
                         
                     </div>
@@ -320,22 +319,13 @@ official define:Reactive Extensions for the JVM – a library for composing asyn
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Android/" class="post-category" target="_blank">
-                                Android
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-25
+                    2019-09-24
                 </div>
 
                 
@@ -351,188 +341,16 @@ official define:Reactive Extensions for the JVM – a library for composing asyn
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>official define:<br>Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.<br>翻译过来就是：<br>Java虚拟机的响应式扩展——一个用于使用Java虚拟机的可观察序列来编写异步和基于事件的程序库。<br>简单来说就是：一个用于处理异步事件的框架。</p>
-</blockquote>
-<p>有同学不仅感到疑惑了，Android的异步处理机制又不是只有这么一个，学习了其他的异步处理机制已经够用了，为什么还要学习这个呢？有这样想法的同学怕不是没遇到异步处理逻辑复杂时代码何其混乱的情况。而RxJava随着程序逻辑变得越来越复杂，它依然能够保持简洁。</p>
-<p>言归正传，学习过后，有了对比，你就知道为什么这个框架会这么火了。（本文介绍RxJava 3.x版本）</p>
-<p>[toc]</p>
-<h4 id="设置依赖"><a href="#设置依赖" class="headerlink" title="设置依赖"></a>设置依赖</h4><pre><code>implementation &#39;io.reactivex.rxjava3:rxjava:3.x.y&#39;</code></pre><h4 id="写一个HelloWrold"><a href="#写一个HelloWrold" class="headerlink" title="写一个HelloWrold"></a>写一个HelloWrold</h4><pre><code>package rxjava.examples;
+                <p>&ensp;&ensp;&ensp;&ensp;学习安卓也有一年多的时间了，这期间也学了不少知识，做了不少demo和有点规模的小项目，但是都没有正式上线过一款APP。最近，参与更新了<strong>汕大课程表</strong>这一款APP，并最终定版上线。上线的时候有点小激动，上线的过程中也遇到一些问题，特记录下来。</p>
+<p>&ensp;&ensp;&ensp;&ensp;由于在平时的学习中习惯了直接生成apk文件，所以刚开始打包安装包的时候也是如此，然后傻乎乎的就上线了，伙伴们在下载的时候遇到了问题及时反馈给了我。</p>
+<p>&ensp;&ensp;&ensp;&ensp;检查后发现原来是因为打包的时候没有导入签名文件，所以导致更新后的安装包与用户已安装的应用签名不一致。后来用导入签名文件生成安装包的方法解决了该问题。<br>步骤如下（在Android Studio中操作）：</p>
+<ol>
+<li>Build</li>
+<li>Generate Signed Bundle or APK(选择APK)</li>
+<li>选择签名文件并输入密码然后next, finish即可</li>
+</ol>
+<p>&ensp;&ensp;&ensp;&ensp;在这次更新、发包、上线过程中学到不少东西！</p>
 
-import io.reactivex.rxjava3.core.*;
-
-public class HelloWorld {
-    public static void main(String[] args) {
-        Flowable.just(&quot;Hello world&quot;).subscribe(System.out::println);
-    }
-}</code></pre><p>如果你的平台不支持Java 8 lambdas表达式，那么你必须手动创建消费者的内部类：</p>
-<pre><code>import io.reactivex.rxjava3.functions.Consumer;
-
-Flowable.just(&quot;Hello world&quot;)
-  .subscribe(new Consumer&lt;String&gt;() {
-      @Override public void accept(String s) {
-          System.out.println(s);
-      }
-  });</code></pre><p>请注意，RxJava 3组件现在位于io.reactivex.rxjava3下，而基类和接口则位于io.reactivex.rxjava3.core下。</p>
-<h4 id="认识一下基类"><a href="#认识一下基类" class="headerlink" title="认识一下基类"></a>认识一下基类</h4><p>io.reactivex.rxjava3.core.Flowable: 0..N 流, 支持响应流和<em>反压力</em>（下文有解析）<br>io.reactivex.rxjava3.core.Observable: 0..N 流,，无反压力<br>io.reactivex.rxjava3.core.Single: 只有一项正确或否的流，<br>io.reactivex.rxjava3.core.Completable: 没有项目但只有完成或错误信号的流程，<br>io.reactivex.rxjava3.core.Maybe: 没有项，只有一项，或错误的流</p>
-<h4 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h4><p><strong>上行数据流，下行数据流</strong></p>
-<p>RxJava中的数据流由源，零个或多个中间步骤组成，后跟数据消费者或组合器步骤（其中步骤负责通过某种方式消费数据流）：</p>
-<pre><code>source.operator1().operator2().operator3().subscribe(consumer);
-
-source.flatMap(value -&gt; source.operator1().operator2().operator3());</code></pre><p>在这里，如果我们想象自己在操作器2上，朝着左边向源头看，被称为上游。向右侧看用户/消费者，称为下游。当每个元素都写在单独的行上时，这一点会更容易理解：</p>
-<pre><code>source
-  .operator1()
-  .operator2()
-  .operator3()
-  .subscribe(consumer)</code></pre><p><strong>运动中的对象</strong></p>
-<p>在RxJava的文档中，发射，发射，项目，事件，信号，数据和消息被视为同义词，并表示沿数据流传播的对象。</p>
-<p><strong>解释反压力</strong></p>
-<p>当数据流通过异步步骤运行时，每个步骤可能以不同的速度执行不同的事情。为了避免压倒性的这些步骤（通常表现为由于临时缓冲或需要跳过/删除数据而导致内存使用量增加），应用了所谓的反压力，这是一种流控制形式，步骤可以表示它们准备处理的项目数。这允许在一个步骤通常无法知道上游将向其发送多少项的情况下限制数据流的内存使用。</p>
-<p>在RxJava中，专用的可流类被指定为支持反压力，而Observable则专门用于非反压力操作（短序列、GUI交互等）。其他类型，单一的，可能的和复杂的，不支持也不应该支持反压力。</p>
-<p><strong>装配时间</strong></p>
-<p>通过应用各种中间运算符来准备数据流发生在所谓的组装时间中：</p>
-<pre><code>Flowable&lt;Integer&gt; flow = Flowable.range(1, 5)
-.map(v -&gt; v * v)
-.filter(v -&gt; v % 3 == 0);</code></pre><p>此时，数据还没有流动，也没有副作用发生。</p>
-<p><strong>订阅时间</strong></p>
-<p>当在内部建立处理步骤链的流上调用subscribe()时，这是一种临时状态：</p>
-<pre><code>flow.subscribe(System.out::println)</code></pre><p>这时会触发订阅副作用（请参阅doOnsubscribe）。在这种状态下，某些源会立即阻止或开始发出项目。</p>
-<p><strong>运行</strong></p>
-<p>这是数据流主动发出项目，错误或完成信号时的状态：</p>
-<pre><code>Observable.create(emitter -&gt; {
-     while (!emitter.isDisposed()) {
-         long time = System.currentTimeMillis();
-         emitter.onNext(time);
-         if (time % 2 != 0) {
-             emitter.onError(new IllegalStateException(&quot;Odd millisecond!&quot;));
-             break;
-         }
-     }
-})
-.subscribe(System.out::println, Throwable::printStackTrace);</code></pre><p>也就是在上面给出的示例的主体执行时。</p>
-<h4 id="简单后台计算"><a href="#简单后台计算" class="headerlink" title="简单后台计算"></a>简单后台计算</h4><p>RxJava的一个常见用例是在后台线程上运行一些计算、网络请求并在UI线程上显示结果（或报错）：</p>
-<pre><code>import io.reactivex.rxjava3.schedulers.Schedulers;
-
-Flowable.fromCallable(() -&gt; {
-    Thread.sleep(1000); //  imitate expensive computation
-    return &quot;Done&quot;;
-})
-  .subscribeOn(Schedulers.io())
-  .observeOn(Schedulers.single())
-  .subscribe(System.out::println, Throwable::printStackTrace);
-
-Thread.sleep(2000); // &lt;--- wait for the flow to finish</code></pre><p>这种类型的链接方法被称为类似于生成器模式的FluentAPI。然而，RxJava的反应类型是不可变的；每个方法调用都返回一个新的可流性，并添加了行为。举例来说，这个例子可以改写如下：</p>
-<pre><code>Flowable&lt;String&gt; source = Flowable.fromCallable(() -&gt; {
-    Thread.sleep(1000); //  imitate expensive computation
-    return &quot;Done&quot;;
-});
-
-Flowable&lt;String&gt; runBackground = source.subscribeOn(Schedulers.io());
-
-Flowable&lt;String&gt; showForeground = runBackground.observeOn(Schedulers.single());
-
-showForeground.subscribe(System.out::println, Throwable::printStackTrace);
-
-Thread.sleep(2000);</code></pre><p>通常，你可以通过subscribeOn将计算或阻塞IO移动到其他线程。一旦数据准备好了，您就可以确保通过observeOn在前台或GUI线程上对它们进行处理。</p>
-<h4 id="调度者-订阅者-Scheduler"><a href="#调度者-订阅者-Scheduler" class="headerlink" title="调度者/订阅者(Scheduler)"></a>调度者/订阅者(Scheduler)</h4><p>RxJava运算符不直接与线程或执行器服务一起工作，而是与所谓的调度程序一起工作，后者抽象出统一API背后的并发源。RxJava3有几个标准的调度程序，可以通过调度程序实用程序类访问。</p>
-<p>Schedulers.computation()：在后台固定数量的专用线程上运行计算密集型工作。大多数异步运算符都将其用作默认调度程序</p>
-<p>Schedulers.io()：在一组动态变化的线程上运行I/O类或阻塞操作。</p>
-<p>Schedulers.single()：以顺序和先进先出的方式在单个线程上运行工作。</p>
-<p>Schedulers.trampoline()：在一个参与线程中按顺序和FIFO方式运行工作，通常用于测试目的。</p>
-<p>在所有的JVM平台上都可以使用这些工具，但是某些特定的平台（如Android）定义了它们自己的典型调度程序：<code>AndroidSchedulers.mainThread()</code>, <code>SwingScheduler.instance()</code> or <code>JavaFXSchedulers.gui()</code>。<br>此外，还可以选择包装现有的<code>Executor</code>（及其子类型如<code>ExecutorService</code>）通过<code>Schedulers.from(Executor)</code>方法到调度者<code>Scheduler</code>。例如，这可以用来拥有一个更大但仍然固定的线程池（分别与<code>calculation()</code>和<code>io()</code>不同）。</p>
-<p>可以看到上文中<code>Thread.sleep(2000);</code>运行到最后都不会出现意外。在RxJava，默认调度程序<code>Scheduler</code>运行在守护进程线程上，这意味着一旦Java主线程退出，它们都会停止，后台计算可能永远不会发生。在这个例子中，睡眠一段时间可以让您在控制台上看到流的输出，并有足够的空闲时间。</p>
-<h4 id="流中的并发性"><a href="#流中的并发性" class="headerlink" title="流中的并发性"></a>流中的并发性</h4><p>RxJava中的流本质上是连续的，分为几个处理阶段，这些处理阶段可能同时运行：</p>
-<pre><code>Flowable.range(1, 10)
-  .observeOn(Schedulers.computation())
-  .map(v -&gt; v * v)
-  .blockingSubscribe(System.out::println);</code></pre><p> 在这个示例中，流在计算调度程序上对从1到10的数字进行平方，并使用“主”线程上的结果（更准确地说，是blockingSubscribe的调用线程）。但是，lambda v-&gt;v*v 并没有为此流并行运行；它在同一个计算线程上一个接一个地接收值1到10。</p>
-<h4 id="并行处理"><a href="#并行处理" class="headerlink" title="并行处理"></a>并行处理</h4><p> 并行处理数字1到10要复杂一些：</p>
-<pre><code>Flowable.range(1, 10)
-  .flatMap(v -&gt;
-      Flowable.just(v)
-        .subscribeOn(Schedulers.computation())
-        .map(w -&gt; w * w)
-  )
-  .blockingSubscribe(System.out::println);</code></pre><p> 实际上，RxJava中的并行性意味着运行独立的流，并将结果合并回单个流。操作符flatMap首先将每个数字从1到10映射到它自己的单独的流中，运行它们并合并计算结果。</p>
-<p>但请注意，flatMap不保证任何顺序，内部流的最终结果可能最终交错。</p>
-<p>这里还有可供替代的操作：</p>
-<ul>
-<li>concatMap 一次映射并运行一个内部流</li>
-<li>concatMapEager 它会“同时”运行所有内部流程，但输出流程将按创建内部流程的顺序排列。</li>
-</ul>
-<p>或者，Flowable.parallel()运算符和parallelFlowable类型有助于实现相同的并行处理模式：</p>
-<pre><code>Flowable.range(1, 10)
-  .parallel()
-  .runOn(Schedulers.computation())
-  .map(v -&gt; v * v)
-  .sequential()
-  .blockingSubscribe(System.out::println);</code></pre><h4 id="依赖子流程"><a href="#依赖子流程" class="headerlink" title="依赖子流程"></a>依赖子流程</h4><p>flatMap是一个强大的操作者，在很多情况下都能提供帮助。例如，给定一个返回流的服务，我们想调用另一个具有第一个服务发出的值的服务：</p>
-<pre><code>Flowable&lt;Inventory&gt; inventorySource = warehouse.getInventoryAsync();
-
-inventorySource
-    .flatMap(inventoryItem -&gt; erp.getDemandAsync(inventoryItem.getId())
-            .map(demand -&gt; &quot;Item &quot; + inventoryItem.getName() + &quot; has demand &quot; + demand))
-    .subscribe(System.out::println);</code></pre><h4 id="延续"><a href="#延续" class="headerlink" title="延续"></a>延续</h4><p>有时，当一个项目变得可用时，人们希望对它执行一些依赖的计算。这有时被称为延续，根据应该发生什么以及涉及到什么类型，可能需要使用各种运算符来完成。</p>
-<ul>
-<li>依赖</li>
-</ul>
-<p>The most typical scenario is to given a value, invoke another service, await and continue with its result:</p>
-<pre><code>service.apiCall()
-.flatMap(value -&gt; service.anotherApiCall(value))
-.flatMap(next -&gt; service.finalCall(next))
-)</code></pre><p>通常情况下，后面的序列也需要来自早期映射的值。这可以通过将外部平面图移动到上一个平面图的内部来实现，例如：</p>
-<pre><code>service.apiCall()
-.flatMap(value -&gt;
-    service.anotherApiCall(value)
-    .flatMap(next -&gt; service.finalCallBoth(value, next))
-)</code></pre><p>这里，原始值将在内部flatMap中可用，并由lambda变量捕获提供。</p>
-<ul>
-<li>非依赖<br>在其他场景中，第一个源/数据流的结果是不相关的，我们希望继续使用准独立的其他源。<pre><code>Observable continued = sourceObservable.flatMapSingle(ignored -&gt; someSingleSource)
-continued.map(v -&gt; v.toString())
-.subscribe(System.out::println, Throwable::printStackTrace);</code></pre>然而，这种情况下的延续保持可观察性<code>Observable</code>，而不是更合适的单一<code>Single</code>。（这是可以理解的，因为从flatMapsingle的角度来看，sourceObservable是一个多值源，因此映射也可能产生多个值）。</li>
-</ul>
-<p>通常通过这种方法可以通过使用Completeable作为中介和它的运算符<code>andThen</code>，并使用其他方法来恢复，从而更具表现力（同时也降低了开销）：</p>
-<pre><code>sourceObservable
-  .ignoreElements()           // returns Completable
-  .andThen(someSingleSource)
-  .map(v -&gt; v.toString())</code></pre><p><code>sourceObservable</code>和<code>somesingleSource</code>之间的唯一依赖关系是前者应该正常完成，以便后者被使用。</p>
-<ul>
-<li>延迟依赖<br>有时，前一个序列和新序列之间存在隐式的数据依赖关系，由于某种原因，这些数据依赖关系不是通过“常规通道”流动的。人们倾向于写这样的延续：<pre><code>AtomicInteger count = new AtomicInteger();
-</code></pre></li>
-</ul>
-<p>Observable.range(1, 10)<br>  .doOnNext(ignored -&gt; count.incrementAndGet())<br>  .ignoreElements()<br>  .andThen(Single.just(count.get()))<br>  .subscribe(System.out::println);</p>
-<pre><code>不幸的是，这将打印0，因为当数据流尚未运行时，Single.just(count.get())将在组装时进行计算。我们需要一些东西来延迟这个单一源的计算，直到主源完成运行时为止：</code></pre><p>AtomicInteger count = new AtomicInteger();</p>
-<p>Observable.range(1, 10)<br>  .doOnNext(ignored -&gt; count.incrementAndGet())<br>  .ignoreElements()<br>  .andThen(Single.defer(() -&gt; Single.just(count.get())))<br>  .subscribe(System.out::println);</p>
-<pre><code>or</code></pre><p>AtomicInteger count = new AtomicInteger();</p>
-<p>Observable.range(1, 10)<br>  .doOnNext(ignored -&gt; count.incrementAndGet())<br>  .ignoreElements()<br>  .andThen(Single.fromCallable(() -&gt; count.get()))<br>  .subscribe(System.out::println);</p>
-<pre><code>
-#### 类型转换
-有时，源或服务返回的类型与使用它的流不同。例如，在上面的清单示例中，getDemandasync可以返回Single&lt;DemandRecord&gt;。如果代码示例保持不变，这将导致编译时错误。
-
-在这种情况下，通常有两个选项来修复转换：1）转换为所需类型，或2）查找并使用支持不同类型的特定运算符的重载。
-+ 转换为所需类型
-每个响应性基类都具有可以执行此类转换（包括协议转换）以匹配其他类型的运算符。下表显示了可用的转换选项：
-
-|  | Flowable |Observable  |Single  |Maybe  |Completable  |
-| --- | --- | --- | --- | --- | --- |
-| Flowable |  | toObservable |first, firstOrError, single, singleError, last, lastError| firstElement, singleElement, lastElement |ignoreElements  |
-| Observable | toFlowable |  | first, firstOrError, single, singleError, last, lastError | firstElement, singleElement, lastElement |ignoreElements  |
-| Single | toFlowable | toObservable |  | toMaybe | ignoreElement |
-| Maybe | toFlowable | toObservable | toSingle |  |ignoreElement  |
-| Completable | toFlowable | toObservable | toSingle | toMaybe |  |
-+ 使用具有所需类型的重载
-许多常用的运算符具有可以处理其他类型的重载。这些通常以目标类型的后缀命名：
-
-
-|Operator  |Overloads  |
-| --- | --- |
-|flatMap  | flatMapSingle, flatMapMaybe, flatMapCompletable, flatMapIterable |
-| concatMap | concatMapSingle, concatMapMaybe, concatMapCompletable, concatMapIterable |
-| switchMap | switchMapSingle, switchMapMaybe, switchMapCompletable |
-这些运算符使用后缀而不是简单地使用相同的名称和不同的签名的原因是类型擦除。
-
-Java不考虑操作符`operator(Function&lt;T, Single&lt;R&gt;&gt;)`和操作符`operator(Function&lt;T, Maybe&lt;R&gt;&gt;)`等不同的签名（不同于c#），并且由于擦除，这两个操作符最终会以相同的签名作为重复的方法。
-#### 运算符命名约定</code></pre>
             </div>
             <hr/>
 
@@ -690,9 +508,9 @@ Java不考虑操作符`operator(Function&lt;T, Single&lt;R&gt;&gt;)`和操作符
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《RxJava使用详解》
+                    《记第一次发包》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/25/RxJava使用详解/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/24/记第一次发包/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Jarvis Yuen
             </a> 采用
@@ -732,9 +550,10 @@ Java不考虑操作符`operator(Function&lt;T, Single&lt;R&gt;&gt;)`和操作符
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/09/24/记第一次发包/">
                     <div class="card-image">
@@ -752,9 +571,9 @@ Java不考虑操作符`operator(Function&lt;T, Single&lt;R&gt;&gt;)`和操作符
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -763,6 +582,7 @@ Java不考虑操作符`operator(Function&lt;T, Single&lt;R&gt;&gt;)`和操作符
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -781,24 +601,20 @@ Java不考虑操作符`operator(Function&lt;T, Single&lt;R&gt;&gt;)`和操作符
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/25/Retrofit使用详解/">
+                <a href="/2019/08/25/RxJava使用详解/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Retrofit使用详解">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="RxJava使用详解">
                         
-                        <span class="card-title">Retrofit使用详解</span>
+                        <span class="card-title">RxJava使用详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-Retrofit：适用于Android和Java的类型安全的HTTP客户端
-
-介绍Retrofit将您的HTTP API转换为Java接口。
-public interface GitHubService {
-  @GET(&quot;us
+official define:Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using o
                         
                     </div>
                     <div class="publish-info">
@@ -820,8 +636,8 @@ public interface GitHubService {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/网络请求/" target="_blank">
-                        <span class="chip bg-color">网络请求</span>
+                    <a href="/tags/异步/" target="_blank">
+                        <span class="chip bg-color">异步</span>
                     </a>
                     
                 </div>

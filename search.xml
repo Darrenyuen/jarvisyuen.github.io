@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>记第一次发包</title>
+      <link href="/2019/09/24/%E8%AE%B0%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8F%91%E5%8C%85/"/>
+      <url>/2019/09/24/%E8%AE%B0%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8F%91%E5%8C%85/</url>
+      
+        <content type="html"><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;学习安卓也有一年多的时间了，这期间也学了不少知识，做了不少demo和有点规模的小项目，但是都没有正式上线过一款APP。最近，参与更新了<strong>汕大课程表</strong>这一款APP，并最终定版上线。上线的时候有点小激动，上线的过程中也遇到一些问题，特记录下来。</p><p>&ensp;&ensp;&ensp;&ensp;由于在平时的学习中习惯了直接生成apk文件，所以刚开始打包安装包的时候也是如此，然后傻乎乎的就上线了，伙伴们在下载的时候遇到了问题及时反馈给了我。</p><p>&ensp;&ensp;&ensp;&ensp;检查后发现原来是因为打包的时候没有导入签名文件，所以导致更新后的安装包与用户已安装的应用签名不一致。后来用导入签名文件生成安装包的方法解决了该问题。<br>步骤如下（在Android Studio中操作）：</p><ol><li>Build</li><li>Generate Signed Bundle or APK(选择APK)</li><li>选择签名文件并输入密码然后next, finish即可</li></ol><p>&ensp;&ensp;&ensp;&ensp;在这次更新、发包、上线过程中学到不少东西！</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>RxJava使用详解</title>
       <link href="/2019/08/25/RxJava%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/"/>
       <url>/2019/08/25/RxJava%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
